@@ -20,7 +20,9 @@
         rotate * index
       }deg) translateZ(${translateZ}px)`"
     >
-      {{ emoji }}
+      <template>
+        {{ emoji }}
+      </template>
     </div>
   </div>
 </template>
@@ -33,6 +35,7 @@ export default {
     size: Number,
     emojis: [],
     duration: Number,
+    gutter: Number,
   },
   data() {
     return {
@@ -89,6 +92,7 @@ export default {
       this.$el.style.setProperty("--duration", `${this.duration}ms`);
       this.$el.style.setProperty("--currentDeg", `-${this.currentDeg}deg`);
       this.$el.style.setProperty("--size", `${this.size}px`);
+      this.$el.style.setProperty("--gutter", `${this.gutter}px`);
     },
     autoTurn() {
       console.log(this.trigger);
@@ -137,18 +141,25 @@ export default {
   $currentDeg: var(--currentDeg);
   $rollBackDeg: var(--rollBackDeg);
   $size: var(--size);
-
+  $gutter: var(--gutter);
+  // overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: $gutter;
+  width: $size;
+  flex-shrink: 0;
   /* 變數區 END*/
   * {
     box-sizing: border-box;
   }
-  // perspective: 999999px;
+  // perspective: 99999px;
   // user-select: none;
   // position: relative;
   // display: flex;
   // align-items: center;
   // margin-right: $width;
-  // transform-style: preserve-3d;
+  transform-style: preserve-3d;
   // .gift {
   //   position: absolute;
   //   display: flex;
@@ -167,9 +178,13 @@ export default {
   .roller {
     height: 100%;
     line-height: 100%;
-    width: 100%;
+    width: $size;
     font-size: $size;
     background-color: wheat;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &.flat {

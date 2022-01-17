@@ -11,46 +11,30 @@
             width: this.windowSpan + 'px',
           }"
         >
-          <div
-            class="emoji pl-0 pr-0"
-            :style="{ width: this.emojiSize + 'px' }"
-          >
-            <Emoji
-              :size="this.emojiSize"
-              :emojis="this.eyes"
-              :duration="1000"
-              :trigger="this.trigger"
-              @finished="isFinished"
-            />
-          </div>
-          <div
-            class="emoji pl-0 pr-0"
-            :style="{
-              'margin-left': this.gutter + 'px',
-              'margin-right': this.gutter + 'px',
-              width: this.emojiSize + 'px',
-            }"
-          >
-            <Emoji
-              :size="this.emojiSize"
-              :emojis="this.mouths"
-              :duration="1000"
-              :trigger="this.trigger"
-              @finished="isFinished"
-            />
-          </div>
-          <div
-            class="emoji pl-0 pr-0"
-            :style="{ width: this.emojiSize + 'px' }"
-          >
-            <Emoji
-              :size="this.emojiSize"
-              :emojis="this.eyes"
-              :duration="1000"
-              :trigger="this.trigger"
-              @finished="isFinished"
-            />
-          </div>
+          <Emoji
+            :size="this.emojiSize"
+            :gutter="this.gutter"
+            :emojis="this.eyes"
+            :duration="1000"
+            :trigger="this.trigger"
+            @finished="isFinished"
+          />
+          <Emoji
+            :size="this.emojiSize"
+            :gutter="this.gutter"
+            :emojis="this.mouths"
+            :duration="1000"
+            :trigger="this.trigger"
+            @finished="isFinished"
+          />
+          <Emoji
+            :size="this.emojiSize"
+            :gutter="this.gutter"
+            :emojis="this.eyes"
+            :duration="1000"
+            :trigger="this.trigger"
+            @finished="isFinished"
+          />
         </div>
       </div>
       <Machine ref="machine" />
@@ -58,7 +42,13 @@
     <div class="row utils justify-content-center flex-nowrap pl-4 pr-4 pt-2">
       <button
         type="button"
-        class="btn btn-danger col-md-3 mr-2"
+        :class="[
+          'btn',
+          'btn-danger',
+          'col-md-3',
+          'mr-2',
+          { disabled: disabled },
+        ]"
         @click="turn()"
       >
         Roll
@@ -85,7 +75,7 @@ export default {
       windowSpan: NaN,
       gutter: NaN,
       header: 100,
-      eyes: ["T", "^", "O", "$", "@", "Q", "O", "$", "@", "Q"],
+      eyes: ["T", "^", "O", "$", "@", "Q"],
       mouths: ["w", "_", "o", "3", "m", "v"],
       trigger: null,
       result: "",
@@ -99,22 +89,22 @@ export default {
   methods: {
     getEmojiY() {
       let rect = this.$refs.machine.$refs.rect1.getBoundingClientRect();
-      return rect.top + 5 - this.header;
+      return rect.top + 14 - this.header;
     },
     getEmojiSize() {
       let rect = this.$refs.machine.$refs.rect1.getBoundingClientRect();
-      return rect.width - 2.5;
+      return rect.width - 14;
     },
     getWindowSpan() {
       let rect1 = this.$refs.machine.$refs.rect1.getBoundingClientRect();
       let rect3 = this.$refs.machine.$refs.rect3.getBoundingClientRect();
-      return rect3.x + rect3.width - rect1.x;
+      return rect3.x + rect3.width - rect1.x - 14;
       //   return rect1.width * 3;
     },
     getGutter() {
       let rect1 = this.$refs.machine.$refs.rect1.getBoundingClientRect();
       let rect2 = this.$refs.machine.$refs.rect2.getBoundingClientRect();
-      return rect2.x - rect1.x - rect1.width;
+      return rect2.x - rect1.x - rect1.width + 14;
     },
     turn() {
       this.result = "";
@@ -145,7 +135,6 @@ $dark-red: #e65c5c;
 #emoji-wrapper {
   position: absolute;
   text-align: center;
-  // overflow: hidden;
 }
 
 .emoji {
