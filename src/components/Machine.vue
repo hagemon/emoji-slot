@@ -1,0 +1,150 @@
+<template>
+  <svg
+    ref="svg"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="1.1"
+    width="552px"
+    height="382px"
+    viewBox="-0.5 -0.5 552 382"
+    content='&lt;mxfile host="Electron" modified="2022-01-15T07:36:36.533Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/16.1.2 Chrome/96.0.4664.55 Electron/16.0.5 Safari/537.36" etag="eDQMwxPgS2tAGKv3JuoN" version="16.1.2" type="device"&gt;&lt;diagram id="jXqzgn5MUv_qghuTJWsv" name="第 1 页"&gt;5VhNb6MwFPw1HIuwjfm4lk2ye9hDFWn3bIELtAZHxilJf/0aMAFiWu1KYYsUX7Dn2RjPvPGTsFBUnHaCHLKfPKHMgk5ystA3C0Lo4kA9GuTcISAIUYekIk80NgD7/J1q0NHoMU9oNZkoOWcyP0zBmJcljeUEI0LwejrtmbPprgeSUgPYx4SZ6O88kVmHBtAf8O80T7N+Z+CFXaQg/WR9kiojCa9HENpYKBKcy65XnCLKGvZ6Xrp12w+ilw8TtJR/s+DX0+4pch5eXqpS1j9oudu/Vw8Qd695I+yoT6y/Vp57CgQ/lglt3gIs9FhnuaT7A4mbaK1UV1gmC6bDKSNVQ7mj+pcTt4NXKuOsH0jBXy+Egmbhc85YxBkX7aZou/VUu0ztIyUv1b6PRMQ6VQBWQ5MKzc4bFZKeRpCmZkd5QaU4qyl91HVtFI6aTlydtxBrXuohCTACtkazcQp4WnCiUy+9bDaoozpaoH8Ra41aaUVuIoFzxbljct7PGTOO/KUYv7U7JixP6P+YcWSaI2qbYY5x5AZ6QBDaTjiRBLsq5bGhCvI9UxUXLyQKWoEoC9oAAnhNuxvM0x7OmCFcygveF9I+ynCnbYYg/lwJ2XqbW5WHAE3vpjCwfVMRALAdzNUEtJQq4QrM8GU3FLiq0i5Ccz4JZm4n317qegJ3bRTkNkXDGdpKfQP8ezYO8tzPVFqHj4J79hEGazXOXVccDP9rxVHD4QdBGxv9Z0GbPw==&lt;/diagram&gt;&lt;/mxfile&gt;'
+    style="background-color: rgb(255, 255, 255)"
+  >
+    <defs />
+    <g ref="g">
+      <rect
+        x="9.4"
+        y="7"
+        width="531.2"
+        height="160"
+        rx="24"
+        ry="24"
+        fill="#ff6666"
+        stroke="none"
+        pointer-events="all"
+      />
+      <rect
+        ref="outer"
+        x="5"
+        y="5"
+        width="540"
+        height="370"
+        rx="55.5"
+        ry="55.5"
+        fill="none"
+        stroke="rgb(0, 0, 0)"
+        stroke-width="11"
+        pointer-events="all"
+      />
+      <rect
+        x="84.09"
+        y="296.25"
+        width="376"
+        height="45"
+        rx="6.75"
+        ry="6.75"
+        fill="#cccccc"
+        stroke="#cccccc"
+        stroke-width="3"
+        pointer-events="all"
+      />
+      <rect
+        x="77.09"
+        y="236.25"
+        width="390"
+        height="90"
+        rx="13.5"
+        ry="13.5"
+        fill="none"
+        stroke="rgb(0, 0, 0)"
+        stroke-width="11"
+        pointer-events="all"
+      />
+      <rect
+        ref="rect1"
+        x="48"
+        y="53.75"
+        width="115.82"
+        height="130"
+        rx="17.37"
+        ry="17.37"
+        fill="#fff6e5"
+        stroke="#000000"
+        stroke-width="7"
+        pointer-events="all"
+      />
+      <rect
+        x="63"
+        y="188.25"
+        width="86"
+        height="7.5"
+        rx="1.13"
+        ry="1.13"
+        fill="#cccccc"
+        stroke="#cccccc"
+        stroke-width="3"
+        pointer-events="all"
+      />
+      <rect
+        ref="rect2"
+        x="214.09"
+        y="53.75"
+        width="115.82"
+        height="130"
+        rx="17.37"
+        ry="17.37"
+        fill="#fff6e5"
+        stroke="#000000"
+        stroke-width="7"
+        pointer-events="all"
+      />
+      <rect
+        x="229.09"
+        y="188.25"
+        width="86"
+        height="7.5"
+        rx="1.13"
+        ry="1.13"
+        fill="#cccccc"
+        stroke="#cccccc"
+        stroke-width="3"
+        pointer-events="all"
+      />
+      <rect
+        ref="rect3"
+        x="378"
+        y="53.75"
+        width="115.82"
+        height="130"
+        rx="17.37"
+        ry="17.37"
+        fill="#fff6e5"
+        stroke="#000000"
+        stroke-width="7"
+        pointer-events="all"
+      />
+      <rect
+        x="393"
+        y="188.25"
+        width="86"
+        height="7.5"
+        rx="1.13"
+        ry="1.13"
+        fill="#cccccc"
+        stroke="#cccccc"
+        stroke-width="3"
+        pointer-events="all"
+      />
+    </g>
+  </svg>
+</template>
+
+<script>
+export default {
+  name: "Machine",
+  props: {},
+};
+</script>
+
+<style>
+</style>
