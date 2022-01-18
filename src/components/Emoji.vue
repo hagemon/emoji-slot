@@ -11,9 +11,9 @@
       </template>
     </div>
   </div> -->
-  <div :class="['wrapper', { autoTurn: isRunning }]">
+  <div :class="['wrapper', 'flat', { autoTurn: isRunning }]">
     <div
-      class="roller flat"
+      class="roller"
       v-for="(emoji, index) in this.emojis"
       :key="index"
       :style="`transform: rotateX(${
@@ -180,11 +180,14 @@ export default {
     line-height: 100%;
     width: $size;
     font-size: $size;
-    background-color: wheat;
+    text-align: center;
+    background-color: #fff6e5;
+    // background-color: burlywood;
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: -1px;
   }
 
   &.flat {

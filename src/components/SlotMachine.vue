@@ -4,7 +4,7 @@
     <div id="wrapper" class="row justify-content-center pl-4 pr-4">
       <div id="emoji-wrapper" v-if="this.windowSpan">
         <div
-          class="row flex-nowrap"
+          class="row flex-nowrap row-wrapper"
           :style="{
             'margin-top': this.emojiY + 'px',
             height: this.emojiSize + 'px',
@@ -15,7 +15,7 @@
             :size="this.emojiSize"
             :gutter="this.gutter"
             :emojis="this.eyes"
-            :duration="1000"
+            :duration="3000"
             :trigger="this.trigger"
             @finished="isFinished"
           />
@@ -23,7 +23,7 @@
             :size="this.emojiSize"
             :gutter="this.gutter"
             :emojis="this.mouths"
-            :duration="1000"
+            :duration="4000"
             :trigger="this.trigger"
             @finished="isFinished"
           />
@@ -31,7 +31,7 @@
             :size="this.emojiSize"
             :gutter="this.gutter"
             :emojis="this.eyes"
-            :duration="1000"
+            :duration="5000"
             :trigger="this.trigger"
             @finished="isFinished"
           />
@@ -76,10 +76,11 @@ export default {
       gutter: NaN,
       header: 100,
       eyes: ["T", "^", "O", "$", "@", "Q"],
-      mouths: ["w", "_", "o", "3", "m", "v"],
+      mouths: ["^", "_", "o", "3", "m", "v"],
       trigger: null,
       result: "",
       disabled: false,
+      offset: 6,
     };
   },
   components: {
@@ -89,22 +90,22 @@ export default {
   methods: {
     getEmojiY() {
       let rect = this.$refs.machine.$refs.rect1.getBoundingClientRect();
-      return rect.top + 14 - this.header;
+      return rect.top + 14 - this.header + this.offset;
     },
     getEmojiSize() {
       let rect = this.$refs.machine.$refs.rect1.getBoundingClientRect();
-      return rect.width - 14;
+      return rect.width - 14 - this.offset;
     },
     getWindowSpan() {
       let rect1 = this.$refs.machine.$refs.rect1.getBoundingClientRect();
       let rect3 = this.$refs.machine.$refs.rect3.getBoundingClientRect();
-      return rect3.x + rect3.width - rect1.x - 14;
+      return rect3.x + rect3.width - rect1.x - 14 -this.offset;
       //   return rect1.width * 3;
     },
     getGutter() {
       let rect1 = this.$refs.machine.$refs.rect1.getBoundingClientRect();
       let rect2 = this.$refs.machine.$refs.rect2.getBoundingClientRect();
-      return rect2.x - rect1.x - rect1.width + 14;
+      return rect2.x - rect1.x - rect1.width + 14 + this.offset;
     },
     turn() {
       this.result = "";
@@ -139,6 +140,10 @@ $dark-red: #e65c5c;
 
 .emoji {
   height: 100%;
+}
+
+.row-wrapper {
+  overflow: hidden;
 }
 
 .btn-danger,
