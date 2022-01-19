@@ -1,16 +1,4 @@
 <template>
-  <!-- <div :class="['gift-container', displayType, { 'autoTurn': isRunning }]">
-    <div
-      :class="['gift', config.style]"
-      v-for="(gift, index) in config.gifts"
-      :key="index"
-      :style="`transform: rotateX(${(rotate) * index}deg) translateZ(${translateZ}px)`">
-      <template v-if="gift.type === 'text'">{{ gift.name }}</template>
-      <template v-if="gift.type === 'image'">
-        <img :src="gift.path" :height="config.height">
-      </template>
-    </div>
-  </div> -->
   <div :class="['wrapper', 'flat', { autoTurn: isRunning }]">
     <div
       class="roller"
@@ -20,9 +8,7 @@
         rotate * index
       }deg) translateZ(${translateZ}px)`"
     >
-      <template>
         {{ emoji }}
-      </template>
     </div>
   </div>
 </template>
@@ -69,6 +55,9 @@ export default {
           this.autoTurnStop();
         }, this.duration + 200);
       }
+    },
+    size() {
+      this.setConfig();
     },
   },
   mounted() {
@@ -130,50 +119,19 @@ export default {
 
 <style lang="scss">
 .wrapper {
-  /* 變數區 START */
-  // $width: var(--width);
-  // $height: var(--height);
-  // $fontSize: var(--fontSize);
-  //
   $duration: var(--duration);
-  // $rotateY: var(--rotateY);
   $targetDeg: var(--targetDeg);
   $currentDeg: var(--currentDeg);
   $rollBackDeg: var(--rollBackDeg);
   $size: var(--size);
   $gutter: var(--gutter);
-  // overflow: hidden;
   position: relative;
   display: flex;
   align-items: center;
   margin-right: $gutter;
   width: $size;
   flex-shrink: 0;
-  /* 變數區 END*/
-  * {
-    box-sizing: border-box;
-  }
-  // perspective: 99999px;
-  // user-select: none;
-  // position: relative;
-  // display: flex;
-  // align-items: center;
-  // margin-right: $width;
   transform-style: preserve-3d;
-  // .gift {
-  //   position: absolute;
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  //   width: $width;
-  //   height: $height;
-  //   border: 1px solid #333;
-  //   background-color: #fff;
-  //   font-size: $fontSize;
-  //   img {
-  //     padding: 1px;
-  //   }
-  // }
 
   .roller {
     height: 100%;
@@ -182,12 +140,12 @@ export default {
     font-size: $size;
     text-align: center;
     background-color: #fff6e5;
-    // background-color: burlywood;
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: -1px;
+    vertical-align: 10px;
   }
 
   &.flat {
@@ -197,13 +155,5 @@ export default {
       transform: rotateX($targetDeg);
     }
   }
-
-  // &.three-dimension {
-  //   transform: rotateY($rotateY) rotateX($currentDeg);
-  //   &.autoTurn {
-  //     transition: $duration cubic-bezier(0.1, 0, 0, $rollBackDeg);
-  //     transform: rotateY($rotateY) rotateX($targetDeg);
-  //   }
-  // }
 }
 </style>

@@ -90,7 +90,7 @@ export default {
   methods: {
     getEmojiY() {
       let rect = this.$refs.machine.$refs.rect1.getBoundingClientRect();
-      return rect.top + 14 - this.header + this.offset;
+      return rect.top + 14 - this.header;
     },
     getEmojiSize() {
       let rect = this.$refs.machine.$refs.rect1.getBoundingClientRect();
@@ -99,7 +99,7 @@ export default {
     getWindowSpan() {
       let rect1 = this.$refs.machine.$refs.rect1.getBoundingClientRect();
       let rect3 = this.$refs.machine.$refs.rect3.getBoundingClientRect();
-      return rect3.x + rect3.width - rect1.x - 14 -this.offset;
+      return rect3.x + rect3.width - rect1.x - 14 - this.offset;
       //   return rect1.width * 3;
     },
     getGutter() {
@@ -120,12 +120,16 @@ export default {
         console.log(this.result);
       }
     },
+    setParam() {
+      this.emojiY = this.getEmojiY();
+      this.emojiSize = this.getEmojiSize();
+      this.windowSpan = this.getWindowSpan();
+      this.gutter = this.getGutter();
+    },
   },
   mounted() {
-    this.emojiY = this.getEmojiY();
-    this.emojiSize = this.getEmojiSize();
-    this.windowSpan = this.getWindowSpan();
-    this.gutter = this.getGutter();
+    this.setParam();
+    window.onresize = this.setParam;
   },
 };
 </script>
