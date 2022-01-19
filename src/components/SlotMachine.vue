@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row header" :style="{ height: this.header + 'px' }"></div>
-    <div id="wrapper" class="row justify-content-center pl-4 pr-4">
+    <div id="wrapper" class="row justify-content-center pl-4 pr-4 flex-nowrap">
       <div id="emoji-wrapper" v-if="this.windowSpan">
         <div
           class="row flex-nowrap row-wrapper"
@@ -9,6 +9,7 @@
             'margin-top': this.emojiY + 'px',
             height: this.emojiSize + 'px',
             width: this.windowSpan + 'px',
+            'margin-right': `${this.handlerWidth}px`,
           }"
         >
           <Emoji
@@ -38,6 +39,12 @@
         </div>
       </div>
       <Machine ref="machine" />
+      <Handler
+        ref="handler"
+        id="handler"
+        :disabled="disabled"
+        :active="active"
+      />
     </div>
     <div class="row utils justify-content-center flex-nowrap pl-4 pr-4 pt-2">
       <button
@@ -66,26 +73,30 @@
 <script>
 import Machine from "./Machine.vue";
 import Emoji from "./Emoji.vue";
+import Handler from "./Handler.vue";
 export default {
   name: "SlotMachine",
   data() {
     return {
-      emojiY: NaN,
-      emojiSize: NaN,
-      windowSpan: NaN,
-      gutter: NaN,
+      emojiY: null,
+      emojiSize: null,
+      windowSpan: null,
+      gutter: null,
+      handlerWidth: null,
       header: 100,
       eyes: ["T", "^", "O", "$", "@", "Q"],
       mouths: ["^", "_", "o", "3", "m", "v"],
       trigger: null,
       result: "",
       disabled: false,
+      active: false,
       offset: 6,
     };
   },
   components: {
     Machine,
     Emoji,
+    Handler,
   },
   methods: {
     getEmojiY() {
@@ -107,6 +118,14 @@ export default {
       let rect2 = this.$refs.machine.$refs.rect2.getBoundingClientRect();
       return rect2.x - rect1.x - rect1.width + 14 + this.offset;
     },
+    getMachineSize() {
+      let outer = this.$refs.machine.$refs.outer.getBoundingClientRect();
+      return outer.width + 22;
+    },
+    getHandlerWidth() {
+      let handler = this.$refs.handler.$refs.window.getBoundingClientRect();
+      return handler.width - 14;
+    },
     turn() {
       this.result = "";
       this.disabled = true;
@@ -117,6 +136,7 @@ export default {
       this.result += val;
       if (autoTurnList.length === 1) {
         this.disabled = false;
+        this.active = false
         console.log(this.result);
       }
     },
@@ -125,10 +145,22 @@ export default {
       this.emojiSize = this.getEmojiSize();
       this.windowSpan = this.getWindowSpan();
       this.gutter = this.getGutter();
+      this.handlerWidth = this.getHandlerWidth();
+      this.$el.style.setProperty("--machineSize", `${this.getMachineSize()}px`);
+    },
+    configHandler() {
+      // let stick = this.$refs.handler.$refs.stick;
+      let ball = this.$refs.handler.$refs.ball;
+      ball.onclick = () => {
+        console.log("aha");
+        this.active = true
+        this.disabled = true
+      };
     },
   },
   mounted() {
     this.setParam();
+    this.configHandler();
     window.onresize = this.setParam;
   },
 };
@@ -137,6 +169,7 @@ export default {
 <style lang="scss">
 $red: #eb706b;
 $dark-red: #e65c5c;
+$machineSize: var(--machineSize);
 #emoji-wrapper {
   position: absolute;
   text-align: center;
@@ -158,5 +191,11 @@ $dark-red: #e65c5c;
 
 .btn-danger:hover {
   background-color: $dark-red !important;
+}
+
+#handler {
+  position: relative;
+  left: -5px;
+  top: 20px;
 }
 </style>

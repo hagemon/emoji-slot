@@ -134,7 +134,7 @@ export default {
   transform-style: preserve-3d;
 
   .roller {
-    height: 110%;
+    height: 100%;
     line-height: 100%;
     width: $size;
     font-size: $size;
@@ -146,6 +146,7 @@ export default {
     justify-content: center;
     margin-top: -1px;
     vertical-align: middle;
+    padding-bottom: 5px;
   }
 
   &.flat {
