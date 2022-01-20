@@ -84,7 +84,6 @@ export default {
       this.$el.style.setProperty("--gutter", `${this.gutter}px`);
     },
     autoTurn() {
-      console.log(this.trigger);
       // 取得隨機角度(預設至少跑5圈)
       let randomDeg = Math.random() * 360 + 360 * 5;
       randomDeg -= randomDeg % this.rotate; // 減去餘數，避免有高低不一的狀況

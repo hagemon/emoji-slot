@@ -1,6 +1,11 @@
 <template>
   <div class="container">
-    <div class="row header" :style="{ height: this.header + 'px' }"></div>
+    <div
+      class="row header justify-content-center"
+      :style="{ height: this.header + 'px' }"
+    >
+      <h1>EMOJI SLOT</h1>
+    </div>
     <div id="wrapper" class="row justify-content-center pl-4 pr-4 flex-nowrap">
       <div id="emoji-wrapper" v-if="this.windowSpan">
         <div
@@ -46,26 +51,40 @@
         :active="active"
       />
     </div>
-    <div class="row utils justify-content-center flex-nowrap pl-4 pr-4 pt-2">
+    <div class="row justify-content-center btn-wrapper">
       <button
         type="button"
         :class="[
+          'copy-btn',
           'btn',
-          'btn-danger',
+          'btn-dark',
           'col-md-3',
-          'mr-2',
+          'ml-2',
           { disabled: disabled },
         ]"
-        @click="turn()"
-      >
-        Roll
-      </button>
-      <button
-        type="button"
-        :class="['btn', 'btn-dark', 'col-md-3', 'ml-2', { disabled: disabled }]"
+        :style="{
+          position: 'relative',
+          bottom: `${this.btnMargin}px`,
+          width: '50%',
+        }"
+        @click="copyHandler"
       >
         Copy
       </button>
+    </div>
+    <div class="row hint-wrapper justify-content-center">
+      <div
+        class="alert alert-success hint"
+        role="alert"
+        :style="{
+          position: 'relative',
+          bottom: `${this.btnMargin - 10}px`,
+          width: '70%',
+          'text-align': 'center',
+        }"
+      >
+        Copied: {{ this.result }}
+      </div>
     </div>
   </div>
 </template>
@@ -91,6 +110,7 @@ export default {
       disabled: false,
       active: false,
       offset: 6,
+      btnMargin: null,
     };
   },
   components: {
@@ -111,7 +131,6 @@ export default {
       let rect1 = this.$refs.machine.$refs.rect1.getBoundingClientRect();
       let rect3 = this.$refs.machine.$refs.rect3.getBoundingClientRect();
       return rect3.x + rect3.width - rect1.x - 14 - this.offset;
-      //   return rect1.width * 3;
     },
     getGutter() {
       let rect1 = this.$refs.machine.$refs.rect1.getBoundingClientRect();
@@ -129,6 +148,7 @@ export default {
     turn() {
       this.result = "";
       this.disabled = true;
+      this.active = true;
       this.trigger = new Date();
     },
     isFinished(val) {
@@ -136,7 +156,7 @@ export default {
       this.result += val;
       if (autoTurnList.length === 1) {
         this.disabled = false;
-        this.active = false
+        this.active = false;
         console.log(this.result);
       }
     },
@@ -146,16 +166,32 @@ export default {
       this.windowSpan = this.getWindowSpan();
       this.gutter = this.getGutter();
       this.handlerWidth = this.getHandlerWidth();
+      this.btnMargin = this.getBtnMargin();
       this.$el.style.setProperty("--machineSize", `${this.getMachineSize()}px`);
     },
     configHandler() {
       // let stick = this.$refs.handler.$refs.stick;
       let ball = this.$refs.handler.$refs.ball;
       ball.onclick = () => {
-        console.log("aha");
-        this.active = true
-        this.disabled = true
+        if (!this.active) {
+          let ballMove = this.$refs.handler.$refs.ballMove;
+          let stickMove = this.$refs.handler.$refs.stickMove;
+          ballMove.beginElement();
+          stickMove.beginElement();
+          this.turn();
+        }
       };
+    },
+    getBtnMargin() {
+      let svgRect = this.$refs.machine.$refs.svg.getBoundingClientRect();
+      let outerRect = this.$refs.machine.$refs.outer.getBoundingClientRect();
+      return svgRect.height - outerRect.height - 15;
+    },
+    copyHandler() {
+      if (this.result === "") {
+        this.result = this.eyes[0] + this.mouths[0] + this.eyes[0];
+      }
+      navigator.clipboard.writeText(this.result);
     },
   },
   mounted() {
@@ -170,6 +206,16 @@ export default {
 $red: #eb706b;
 $dark-red: #e65c5c;
 $machineSize: var(--machineSize);
+
+.header {
+  line-height: 100%;
+  align-items: center;
+  h1 {
+    border: dashed $red;
+    padding: 3px 30px;
+  }
+}
+
 #emoji-wrapper {
   position: absolute;
   text-align: center;
@@ -196,6 +242,10 @@ $machineSize: var(--machineSize);
 #handler {
   position: relative;
   left: -5px;
-  top: 20px;
+  .active {
+    .ball {
+      top: 50px;
+    }
+  }
 }
 </style>

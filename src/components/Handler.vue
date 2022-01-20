@@ -56,7 +56,7 @@
         pointer-events="all"
       />
       <rect
-        class="stkck"
+        class="stick"
         ref="stick"
         x="6"
         y="101.5"
@@ -66,11 +66,23 @@
         ry="3"
         fill="#000000"
         stroke="none"
-        transform="rotate(90,63,111.5)"
+        transform="rotate(-90,63,111.5)"
         pointer-events="all"
-      />
+      >
+        <animate
+          id="stick-change"
+          ref="stickMove"
+          attributeName="width"
+          values="114;0;114"
+          keyTimes="0;0.3;1"
+          begin="idenfinite"
+          dur="1s"
+          repeatCount="1"
+        />
+      </rect>
       <ellipse
         class="ball"
+        id="ball"
         ref="ball"
         cx="63"
         cy="29"
@@ -79,9 +91,19 @@
         fill="#ff6666"
         stroke="rgb(0, 0, 0)"
         stroke-width="9"
-        pointer-events="all"
-        style="cursor: pointer"
-      />
+        :style="{ cursor: active ? '' : 'pointer' }"
+        :pointer-events="active ? 'none' : 'all'"
+      >
+        <animate
+          ref="ballMove"
+          attributeName="cy"
+          values="25;151.5;25"
+          keyTimes="0;0.3;1"
+          begin="indefinite"
+          dur="1s"
+          repeatCount="1"
+        />
+      </ellipse>
     </g>
   </svg>
 </template>

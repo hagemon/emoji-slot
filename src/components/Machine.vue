@@ -8,7 +8,8 @@
     height="382px"
     viewBox="-0.5 -0.5 552 382"
     content='&lt;mxfile host="Electron" modified="2022-01-15T07:36:36.533Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/16.1.2 Chrome/96.0.4664.55 Electron/16.0.5 Safari/537.36" etag="eDQMwxPgS2tAGKv3JuoN" version="16.1.2" type="device"&gt;&lt;diagram id="jXqzgn5MUv_qghuTJWsv" name="第 1 页"&gt;5VhNb6MwFPw1HIuwjfm4lk2ye9hDFWn3bIELtAZHxilJf/0aMAFiWu1KYYsUX7Dn2RjPvPGTsFBUnHaCHLKfPKHMgk5ystA3C0Lo4kA9GuTcISAIUYekIk80NgD7/J1q0NHoMU9oNZkoOWcyP0zBmJcljeUEI0LwejrtmbPprgeSUgPYx4SZ6O88kVmHBtAf8O80T7N+Z+CFXaQg/WR9kiojCa9HENpYKBKcy65XnCLKGvZ6Xrp12w+ilw8TtJR/s+DX0+4pch5eXqpS1j9oudu/Vw8Qd695I+yoT6y/Vp57CgQ/lglt3gIs9FhnuaT7A4mbaK1UV1gmC6bDKSNVQ7mj+pcTt4NXKuOsH0jBXy+Egmbhc85YxBkX7aZou/VUu0ztIyUv1b6PRMQ6VQBWQ5MKzc4bFZKeRpCmZkd5QaU4qyl91HVtFI6aTlydtxBrXuohCTACtkazcQp4WnCiUy+9bDaoozpaoH8Ra41aaUVuIoFzxbljct7PGTOO/KUYv7U7JixP6P+YcWSaI2qbYY5x5AZ6QBDaTjiRBLsq5bGhCvI9UxUXLyQKWoEoC9oAAnhNuxvM0x7OmCFcygveF9I+ynCnbYYg/lwJ2XqbW5WHAE3vpjCwfVMRALAdzNUEtJQq4QrM8GU3FLiq0i5Ccz4JZm4n317qegJ3bRTkNkXDGdpKfQP8ezYO8tzPVFqHj4J79hEGazXOXVccDP9rxVHD4QdBGxv9Z0GbPw==&lt;/diagram&gt;&lt;/mxfile&gt;'
-    style="background-color: rgb(255, 255, 255)"
+    style="background-color: rgb(255, 255, 255); vertical-align:top;"
+    preserveAspectRatio="xMinYMin meet"
   >
     <defs />
     <g ref="g">
