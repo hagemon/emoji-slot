@@ -14,6 +14,7 @@ export default {
 <style>
 #app {
 background-color: #FCFAF2;;
+font-family: 'Arial';
 }
 html, body {
   margin: 0;

@@ -91,7 +91,8 @@
     </div>
     <div class="row footer fixed-bottom justify-content-center">
       <div class="row">
-        POWERED BY <a href="https://github.com/hagemon">&nbsp;HAGEMON</a>, VIEW SOURCE CODE <a href="https://github.com/hagemon/emoji-slot">&nbsp;HERE</a>
+        POWERED BY <a href="https://github.com/hagemon">&nbsp;HAGEMON</a>, VIEW
+        <a href="https://github.com/hagemon/emoji-slot">&nbsp;SOURCE CODE</a>
       </div>
     </div>
   </div>
@@ -111,9 +112,9 @@ export default {
       gutter: null,
       handlerWidth: null,
       header: this.getHeader(),
-      leyes: ["✧", "≧", "•", "◉", "°", "ㅍ", "ಠ", "`", "´"],
+      leyes: ["✧", "≧", "•", "◉", "°", "ㅍ", "ಠ"],
       mouths: ["ω", "ㅂ", "▽", "３", "Д", "ᗜ", "ᴥ"],
-      reyes: ["✧", "•", "≦", "◉", "°", "ㅍ", "ಠ", "´", "`"],
+      reyes: ["✧", "•", "≦", "◉", "°", "ㅍ", "ಠ"],
       trigger: null,
       result: "",
       disabled: false,
