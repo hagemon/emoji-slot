@@ -89,6 +89,9 @@
         </div>
       </transition>
     </div>
+    <div class="row footer fixed-bottom justify-content-center">
+      POWERED BY <a href="https://github.com/hagemon">&nbsp;HAGEMON</a>
+    </div>
   </div>
 </template>
 
@@ -278,5 +281,9 @@ $machineSize: var(--machineSize);
 .fade-leave-to
 /* .fade-leave-active in <2.1.8 */ {
   opacity: 0;
+}
+
+.footer {
+  padding-bottom: 10px;
 }
 </style>
