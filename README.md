@@ -1,24 +1,7 @@
 # emoji-slot
 
-## Project setup
-```
-npm install
-```
+Simple toy that generate random emoji.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Special thanks to [Vue-SlotMachine](https://github.com/guahsu/Vue-SlotMachine).
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Demo [here]()

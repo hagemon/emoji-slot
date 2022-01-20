@@ -133,7 +133,7 @@ export default {
   transform-style: preserve-3d;
 
   .roller {
-    height: 100%;
+    height: 102%;
     line-height: 100%;
     width: $size;
     font-size: $size;
@@ -146,7 +146,7 @@ export default {
     margin-top: -1px;
     vertical-align: middle;
     padding-bottom: 5px;
-    font: 'Arial';
+    font-family: 'Arial';
   }
 
   &.flat {
