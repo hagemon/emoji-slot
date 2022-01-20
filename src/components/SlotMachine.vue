@@ -90,7 +90,9 @@
       </transition>
     </div>
     <div class="row footer fixed-bottom justify-content-center">
-      POWERED BY <a href="https://github.com/hagemon">&nbsp;HAGEMON</a>
+      <div class="row">
+        POWERED BY <a href="https://github.com/hagemon">&nbsp;HAGEMON</a>, VIEW SOURCE CODE <a href="https://github.com/hagemon/emoji-slot">&nbsp;HERE</a>
+      </div>
     </div>
   </div>
 </template>
@@ -129,7 +131,7 @@ export default {
   methods: {
     getHeader() {
       let w = window.innerHeight;
-      return w/2-200;
+      return w / 2 - 200;
     },
     getEmojiY() {
       let rect = this.$refs.machine.$refs.rect1.getBoundingClientRect();
