@@ -20,7 +20,7 @@
           <Emoji
             :size="this.emojiSize"
             :gutter="this.gutter"
-            :emojis="this.eyes"
+            :emojis="this.leyes"
             :duration="3000"
             :trigger="this.trigger"
             @finished="isFinished"
@@ -36,7 +36,7 @@
           <Emoji
             :size="this.emojiSize"
             :gutter="this.gutter"
-            :emojis="this.eyes"
+            :emojis="this.reyes"
             :duration="5000"
             :trigger="this.trigger"
             @finished="isFinished"
@@ -73,18 +73,21 @@
       </button>
     </div>
     <div class="row hint-wrapper justify-content-center">
-      <div
-        class="alert alert-success hint"
-        role="alert"
-        :style="{
-          position: 'relative',
-          bottom: `${this.btnMargin - 10}px`,
-          width: '70%',
-          'text-align': 'center',
-        }"
-      >
-        Copied: {{ this.result }}
-      </div>
+      <transition name="fade" v-on:enter="enter">
+        <div
+          class="alert alert-success hint"
+          role="alert"
+          :style="{
+            position: 'relative',
+            bottom: `${this.btnMargin - 20}px`,
+            width: '70%',
+            'text-align': 'center',
+          }"
+          v-if="show"
+        >
+          Copied: {{ this.result }}
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -102,15 +105,17 @@ export default {
       windowSpan: null,
       gutter: null,
       handlerWidth: null,
-      header: 100,
-      eyes: ["T", "^", "O", "$", "@", "Q"],
-      mouths: ["^", "_", "o", "3", "m", "v"],
+      header: this.getHeader(),
+      leyes: ["✧", "≧", "•", "◉", "°", "ㅍ", "ಠ", "`", "´"],
+      mouths: ["ω", "ㅂ", "▽", "３", "Д", "ᗜ", "ᴥ"],
+      reyes: ["✧", "•", "≦", "◉", "°", "ㅍ", "ಠ", "´", "`"],
       trigger: null,
       result: "",
       disabled: false,
       active: false,
       offset: 6,
       btnMargin: null,
+      show: false,
     };
   },
   components: {
@@ -119,6 +124,10 @@ export default {
     Handler,
   },
   methods: {
+    getHeader() {
+      let w = window.innerHeight;
+      return w/2-200;
+    },
     getEmojiY() {
       let rect = this.$refs.machine.$refs.rect1.getBoundingClientRect();
       return rect.top + 14 - this.header;
@@ -161,6 +170,7 @@ export default {
       }
     },
     setParam() {
+      this.header = this.getHeader();
       this.emojiY = this.getEmojiY();
       this.emojiSize = this.getEmojiSize();
       this.windowSpan = this.getWindowSpan();
@@ -185,13 +195,20 @@ export default {
     getBtnMargin() {
       let svgRect = this.$refs.machine.$refs.svg.getBoundingClientRect();
       let outerRect = this.$refs.machine.$refs.outer.getBoundingClientRect();
-      return svgRect.height - outerRect.height - 15;
+      return svgRect.height - outerRect.height - 25;
     },
     copyHandler() {
+      this.show = !this.show;
       if (this.result === "") {
-        this.result = this.eyes[0] + this.mouths[0] + this.eyes[0];
+        this.result = this.leyes[0] + this.mouths[0] + this.reyes[0];
       }
       navigator.clipboard.writeText(this.result);
+    },
+    enter() {
+      var that = this;
+      setTimeout(() => {
+        that.show = false;
+      }, 2000);
     },
   },
   mounted() {
@@ -206,6 +223,9 @@ export default {
 $red: #eb706b;
 $dark-red: #e65c5c;
 $machineSize: var(--machineSize);
+.container {
+  background-color: #fcfaf2;
+}
 
 .header {
   line-height: 100%;
@@ -247,5 +267,16 @@ $machineSize: var(--machineSize);
       top: 50px;
     }
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s;
+}
+
+.fade-enter,
+.fade-leave-to
+/* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
 }
 </style>

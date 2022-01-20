@@ -146,6 +146,7 @@ export default {
     margin-top: -1px;
     vertical-align: middle;
     padding-bottom: 5px;
+    font: 'Arial';
   }
 
   &.flat {
